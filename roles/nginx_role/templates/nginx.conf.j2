@@ -1,0 +1,19 @@
+user {{ nginx_user }};
+worker_processes {{ nginx_worker_processes }};
+error_log {{ nginx_error_log }};
+pid {{ nginx_pid }};
+
+events {
+    worker_connections {{ nginx_worker_connections }};
+}
+
+http {
+    include {{ nginx_include_path }};
+    default_type {{ nginx_default_type }};
+    log_format {{ nginx_log_format }};
+    access_log {{ nginx_access_log }};
+    sendfile {{ nginx_sendfile }};
+    keepalive_timeout {{ nginx_keepalive_timeout }};
+
+    include {{ nginx_conf_d_path }};
+}

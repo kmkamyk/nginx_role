@@ -1,0 +1,16 @@
+---
+- name: Instaluj NGINX
+  apt:
+    name: "{{ nginx_package_name }}"
+    state: present
+
+- name: Skopiuj plik konfiguracyjny NGINX
+  template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_config_dest }}"
+  notify: Restart NGINX
+
+- name: Skopiuj plik HTML
+  template:
+    src: index.html.j2
+    dest: "{{ nginx_html_dest }}"

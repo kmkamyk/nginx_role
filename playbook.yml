@@ -1,0 +1,10 @@
+---
+- name: Playbook dla instalacji i konfiguracji NGINX
+  hosts: your_hosts
+  become: yes
+  tasks:
+    - name: Instaluj i konfiguruj NGINX
+      include_role:
+        name: nginx_role
+      tags:
+        - install

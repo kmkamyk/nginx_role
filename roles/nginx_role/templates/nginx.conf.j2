@@ -16,4 +16,13 @@ http {
     keepalive_timeout {{ nginx_keepalive_timeout }};
 
     include {{ nginx_conf_d_path }};
+    server {
+        listen {{ nginx_listen_port }};
+        server_name {{ nginx_server_name }};
+
+        location / {
+            root /usr/share/nginx/html;
+            index index.html index.htm;
+        }
+    }
 }
